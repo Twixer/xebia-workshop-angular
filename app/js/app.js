@@ -12,6 +12,12 @@ var myAppModule = angular.module('workshop', []).
 	});
 
 function LogCtrl($scope) {
+  $scope.selectedLogs=[];
+  
+  $scope.selectedStatus = {200:true, 404:true, 500:true};
+  
+  $scope.selectedMethods = {GET:true, POST:true, PUT:true, DELETE:true};
+  
   $scope.logs  = [
     {
         "id": "1",
@@ -69,4 +75,24 @@ function LogCtrl($scope) {
         "url": "http://notfound.html",
         "date": "01/01/2013 01:05:00"
     }];
+	
+    function filterLogs() {
+        if ($scope.logs) {
+            var result = [];
+            $scope.logs.forEach(function(log) {
+                if ($scope.selectedStatus[log.status] && $scope.selectedMethods[log.method]) {
+                    result.push(log);
+                }
+            });
+            $scope.selectedLogs = result;
+        }
+    }
+
+	$scope.$watchCollection('selectedStatus', filterLogs);
+	$scope.$watchCollection('selectedMethods', filterLogs);	
 }
+
+
+
+
+
