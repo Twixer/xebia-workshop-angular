@@ -18,8 +18,7 @@
 
     <header>
         <div>
-            <input type="text" ng-model="query" />
-			{{query}}			
+            <input type="text" ng-model="query" />		
         </div>
     </header>
 
@@ -42,7 +41,7 @@
 
     <div id="content">
         <table>
-            <tr ng-repeat="log in logs">
+            <tr ng-repeat="log in logs | filter:query">
                 <td>{{log.date}}</td>
                 <td>{{log.url|truncate}}</td>
                 <td>{{log.method}}</td>
