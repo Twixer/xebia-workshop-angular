@@ -1,5 +1,15 @@
 // declare a module
-var myAppModule = angular.module('workshop', []);
+var myAppModule = angular.module('workshop', []).
+	filter('truncate', function() {
+		return function(input) {
+		  var out = input;
+		  if (input != "" && input.length > 12) { 
+			out = input.substring(input, 12) + "..."		  
+		  }
+		  
+		  return out;
+		}
+	});
 
 function LogCtrl($scope) {
   $scope.logs  = [
@@ -59,5 +69,4 @@ function LogCtrl($scope) {
         "url": "http://notfound.html",
         "date": "01/01/2013 01:05:00"
     }];
-
 }
