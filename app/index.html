@@ -43,11 +43,11 @@
     <div id="content">
         <table>
             <tr ng-repeat="log in logs">
-                <td ng-model="log.date"></td>
-                <td ng-model="log.url"></td>
-                <td ng-model="log.method"></td>
-                <td ng-model="log.status"></td>
-                <td ng-model="log.message"></td>
+                <td>{{log.date}}</td>
+                <td>{{log.url}}</td>
+                <td>{{log.method}}</td>
+                <td>{{log.status}}</td>
+                <td>{{log.message}}</td>
             </tr>
         </table>
     </div>
